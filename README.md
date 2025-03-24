@@ -30,8 +30,11 @@ CommonConversions/
   ├── Program.cs 
   ├── Services/ 
   │ └── ConversionService.cs 
-  ├── test/ 
-  │ └── ConversionServiceTests.cs
+  ├── tests/
+  │ └── others/
+  │    └── CommonConversions.Application.UnitTestsWithMSTest
+  │    └── CommonConversions.Application.UnitTestsWithNUnit
+  │ └── CommonConversions.Application.UnitTests
 ```
   
 ## 🧪 Exemplo de Teste (xUnit)
