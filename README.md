@@ -22,6 +22,9 @@ Demonstrar de forma prática:
 
 ## 📦 Estrutura do Projeto
 
+O projeto está dividido na seguinte **estrutura**:
+
+```path
 CommonConversions/
   ├── src/
   ├── Program.cs 
@@ -29,7 +32,7 @@ CommonConversions/
   │ └── ConversionService.cs 
   ├── test/ 
   │ └── ConversionServiceTests.cs
-
+```
   
 ## 🧪 Exemplo de Teste (xUnit)
 
@@ -46,11 +49,15 @@ public void CelsiusToFahrenheit_ShouldReturn32_WhenInputIs0()
     // Assert
     Assert.Equal(32, result);
 }
+```
 
 ## 🚀 **Como Executar**
+
 Clone o repositório:
 
-```git clone https://github.com/seu-usuario/CommonConversions.git```
+```git
+git clone https://github.com/seu-usuario/CommonConversions.git
+```
 
 Navegue até a pasta do projeto:
 
