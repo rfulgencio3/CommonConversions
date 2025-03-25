@@ -1,6 +1,6 @@
 # CommonConversions
 
-**CommonConversions** é um projeto **didático** desenvolvido com .NET Console App, com o objetivo de ensinar conceitos fundamentais de testes unitários em C#. Ele simula um conjunto de conversões comuns do dia a dia, permitindo a aplicação prática de testes automatizados utilizando o padrão AAA (Arrange-Act-Assert).
+**CommonConversions** é um projeto **didático** desenvolvido baseado no padrão de Arquitetura Limpa, utilizando .NET 9 como Console App e subdividido em projetos do tipo Class Library e Projetos Testes (xUnit, NUnit e MSUnit), com o objetivo de ensinar conceitos fundamentais de testes unitários em C#. Ele simula um conjunto de conversões comuns do dia a dia, permitindo a aplicação prática de testes automatizados utilizando diversas bibliotecas de apoio.
 
 ## 🧠 Objetivo
 
@@ -8,7 +8,9 @@ Demonstrar de forma prática:
 - Como estruturar um projeto simples em C#
 - Aplicar boas práticas de codificação
 - Escrever testes unitários utilizando xUnit, NUnit ou MSTest
-- Entender o padrão AAA nos testes
+- Entender o padrão AAA e padrões de nomencltura nos testes
+- Entender a utilização de diversas bibliotecas de apoio na escrita de testes como: Moq, NSubistitute, Bogus, FluentAssertions, AutoFixture
+- Analisar as métricas de Cobertura de Código utilizando ferramentas open source
 - Utilizar o console como interface simples para entrada e saída de dados
 
 ## 🎯 Funcionalidades
@@ -27,14 +29,20 @@ O projeto está dividido na seguinte **estrutura**:
 ```path
 CommonConversions/
   ├── src/
-  ├── Program.cs 
-  ├── Services/ 
-  │ └── ConversionService.cs 
+  |  └── CommonConversions.Application
+  |    └── Services/ 
+  │     └── ConversionService.cs
+  |  └── CommonConversions.ConsoleApp
+  |   └── Program.cs 
   ├── tests/
   │ └── others/
-  │    └── CommonConversions.Application.UnitTestsWithMSTest
-  │    └── CommonConversions.Application.UnitTestsWithNUnit
-  │ └── CommonConversions.Application.UnitTests
+  │    └── CommonConversions.Application.UnitTestsWithMSTest/
+  |      └── ConversionsServiceTest.cs
+  │    └── CommonConversions.Application.UnitTestsWithNUnit/
+  |      └── Services/
+  |          └──ConversionsServiceTest.cs
+  │ └── CommonConversions.Application.UnitTests/
+  |    └── ConversionsServiceTest.cs
 ```
   
 ## 🧪 Exemplo de Teste (xUnit)
