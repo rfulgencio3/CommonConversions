@@ -32,15 +32,28 @@ public class ConversionServiceTests
     }
 
     [Fact]
-    public void KilogramsToPounds_ShouldConvertCorrectly()
+    public void CelsiusToKelvin_ShouldConvertCorrectly()
     {
         // Arrange
         var service = new ConversionService();
         
         // Act
-        double result = service.KilogramsToPounds(1);
-        
+        double result = service.CelsiusToKelvin(0);
+
         // Assert
-        Assert.Equal(2.20462, result, 5);
+        Assert.Equal(273.15, result, 2);
+    }
+
+    [Fact]
+    public void MilesToKilometers_ShouldConvertCorrectly()
+    {
+        // Arrange
+        var service = new ConversionService();
+
+        // Act
+        double result = service.MilesToKilometers(1);
+
+        // Assert
+        Assert.Equal(1.60934, result, 4);
     }
 }

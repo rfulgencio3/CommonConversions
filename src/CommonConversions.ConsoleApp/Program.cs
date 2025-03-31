@@ -6,45 +6,46 @@ class Program
     {
         var service = new ConversionService();
 
-        Console.WriteLine("=== Common Conversions ===");
-        Console.WriteLine("Choose a conversion:");
-        Console.WriteLine("1 - Celsius to Fahrenheit");
-        Console.WriteLine("2 - Kilometers to Miles");
-        Console.WriteLine("3 - Kilograms to Pounds");
-        Console.WriteLine("4 - Exit");
-
-        var choice = Console.ReadLine();
-
-        while (choice != "4")
+        while (true)
         {
+            Console.Clear();
+            Console.WriteLine("=== Common Conversions ===");
+            Console.WriteLine("1 - Celsius to Fahrenheit");
+            Console.WriteLine("2 - Kilometers to Miles");
+            Console.WriteLine("3 - Kilograms to Pounds");
+            Console.WriteLine("4 - Celsius to Kelvin");
+            Console.WriteLine("5 - Miles to Kilometers");
+            Console.WriteLine("0 - Exit");
+            Console.Write("Choose an option: ");
+            var choice = Console.ReadLine();
+
+            if (choice == "0") break;
+
             Console.Write("Enter the value to convert: ");
-            var input = Console.ReadLine();
-
-            if (double.TryParse(input, out double value))
+            if (!double.TryParse(Console.ReadLine(), out double input))
             {
-                switch (choice)
-                {
-                    case "1":
-                        Console.WriteLine($"Result: {service.CelsiusToFahrenheit(value)} °F");
-                        break;
-                    case "2":
-                        Console.WriteLine($"Result: {service.KilometersToMiles(value)} mi");
-                        break;
-                    case "3":
-                        Console.WriteLine($"Result: {service.KilogramsToPounds(value)} lb");
-                        break;
-                    default:
-                        Console.WriteLine("Invalid option.");
-                        break;
-                }
+                Console.WriteLine("Invalid number.");
+                Console.ReadKey();
+                continue;
             }
+
+            double result = choice switch
+            {
+                "1" => service.CelsiusToFahrenheit(input),
+                "2" => service.KilometersToMiles(input),
+                "3" => service.KilogramsToPounds(input),
+                "4" => service.CelsiusToKelvin(input),
+                "5" => service.MilesToKilometers(input),
+                _ => double.NaN
+            };
+
+            if (double.IsNaN(result))
+                Console.WriteLine("Invalid option.");
             else
-            {
-                Console.WriteLine("Invalid input.");
-            }
+                Console.WriteLine($"Result: {result:F2}");
 
-            Console.WriteLine("\nChoose another conversion or 4 to exit:");
-            choice = Console.ReadLine();
+            Console.WriteLine("\nPress any key to continue...");
+            Console.ReadKey();
         }
 
         Console.WriteLine("Thanks for using CommonConversions!");

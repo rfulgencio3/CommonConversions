@@ -16,4 +16,10 @@ public class ConversionService
     {
         return kg * 2.20462;
     }
+
+    // Método Atividades Parte Um - CelsiusToKelvin
+    public double CelsiusToKelvin(double celsius) => celsius + 273.15;
+
+    // Método Atividades Parte Um - MilesToKilometers
+    public double MilesToKilometers(double miles) => miles / 0.621371;
 }
