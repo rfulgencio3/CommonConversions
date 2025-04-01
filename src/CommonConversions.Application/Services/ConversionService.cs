@@ -10,6 +10,10 @@ public class ConversionService
     {
         _repository = repository;
     }
+    public ConversionService()
+    {
+            
+    }
 
     public double CelsiusToFahrenheit(double celsius)
     {
@@ -26,7 +30,7 @@ public class ConversionService
     {
         var result = km * 0.621371;
 
-        var history = new ConvertHistory(nameof(CelsiusToFahrenheit), km);
+        var history = new ConvertHistory(nameof(KilometersToMiles), km);
 
         _repository.SaveAsync(history);
         return result;

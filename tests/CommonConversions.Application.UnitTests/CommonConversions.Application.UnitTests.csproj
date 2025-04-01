@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CommonConversions.Application\CommonConversions.Application.csproj" />
+    <ProjectReference Include="..\..\src\CommonConversions.Core\CommonConversions.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
