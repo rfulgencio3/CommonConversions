@@ -1,10 +1,20 @@
 ﻿using CommonConversions.Application.Services;
+using CommonConversions.Core.Interfaces;
+using CommonConversions.Infrastructure;
+using CommonConversions.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 class Program
 {
     static void Main(string[] args)
     {
-        var service = new ConversionService();
+        var options = new DbContextOptionsBuilder<CommonConversionsDbContext>()
+            .UseInMemoryDatabase("CommonConversionsDb")
+            .Options;
+
+        var dbContext = new CommonConversionsDbContext(options);
+        IConvertHistoryRepository repository = new ConvertHistoryRepository(dbContext);
+        var service = new ConversionService(repository);
 
         Console.WriteLine("=== Common Conversions ===");
         Console.WriteLine("Choose a conversion:");

@@ -1,19 +1,44 @@
-﻿namespace CommonConversions.Application.Services;
+﻿using CommonConversions.Core.Domain;
+using CommonConversions.Core.Interfaces;
+
+namespace CommonConversions.Application.Services;
 
 public class ConversionService
 {
+    private readonly IConvertHistoryRepository _repository;
+    public ConversionService(IConvertHistoryRepository repository)
+    {
+        _repository = repository;
+    }
+
     public double CelsiusToFahrenheit(double celsius)
     {
-        return (celsius * 9 / 5) + 32;
+        var result =  (celsius * 9 / 5) + 32;
+
+        var history = new ConvertHistory(nameof(CelsiusToFahrenheit), celsius);
+
+        _repository.SaveAsync(history);
+        return result;
+
     }
 
     public double KilometersToMiles(double km)
     {
-        return km * 0.621371;
+        var result = km * 0.621371;
+
+        var history = new ConvertHistory(nameof(CelsiusToFahrenheit), km);
+
+        _repository.SaveAsync(history);
+        return result;
     }
 
     public double KilogramsToPounds(double kg)
     {
-        return kg * 2.20462;
+        var result = kg * 2.20462;
+
+        var history = new ConvertHistory(nameof(KilogramsToPounds), kg);
+
+        _repository.SaveAsync(history);
+        return result;
     }
 }
